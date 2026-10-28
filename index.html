@@ -2,164 +2,996 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mana Jobs - Find Your Future</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mana Jobs | Find Jobs with Trust</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f7f5;
-            color: #24352b;
-        }
+:root {
+  --navy: #142440;
+  --blue: #2859d9;
+  --green: #087f5b;
+  --orange: #a45a00;
+  --red: #b42318;
+  --light: #f4f7fc;
+  --border: #dfe6f0;
+  --text: #202b3c;
+  --muted: #637187;
+}
 
-        header {
-            background: #185c43;
-            color: white;
-            text-align: center;
-            padding: 25px 15px;
-        }
+body {
+  font-family: Arial, sans-serif;
+  background: var(--light);
+  color: var(--text);
+  line-height: 1.6;
+}
 
-        header h1 {
-            margin: 0;
-            font-size: 32px;
-        }
+button, input, select, textarea {
+  font: inherit;
+}
 
-        header p {
-            margin-bottom: 0;
-        }
+button {
+  cursor: pointer;
+}
 
-        main {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-            text-align: center;
-        }
+header {
+  background: var(--navy);
+  color: white;
+  padding: 16px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
 
-        .jobs {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-top: 30px;
-        }
+.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
 
-        .card {
-            background: white;
-            padding: 30px 15px;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px #00000012;
-        }
+.logo span {
+  color: #8fb2ff;
+}
 
-        .card h2 {
-            color: #185c43;
-        }
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
 
-        .card p {
-            line-height: 1.6;
-        }
+nav button {
+  border: none;
+  background: transparent;
+  color: white;
+  padding: 9px 12px;
+  border-radius: 8px;
+}
 
-        .btn {
-            display: inline-block;
-            background: #185c43;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            margin-top: 10px;
-        }
+nav button:hover {
+  background: #304362;
+}
 
-        .btn:hover {
-            background: #10432f;
-        }
+.hero {
+  background: linear-gradient(120deg, #142440, #2859d9);
+  color: white;
+  padding: 65px 6%;
+}
 
-        .details {
-            background: white;
-            padding: 25px;
-            margin-top: 25px;
-            border-radius: 12px;
-            text-align: left;
-        }
+.hero-content {
+  max-width: 1000px;
+  margin: auto;
+}
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #526459;
-        }
+.hero h1 {
+  font-size: clamp(32px, 5vw, 48px);
+  line-height: 1.2;
+  margin: 15px 0;
+}
 
-        @media (max-width: 600px) {
-            .jobs {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+.hero p {
+  max-width: 650px;
+  color: #e4ebff;
+  font-size: 17px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 35px 6%;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+.heading {
+  margin-bottom: 23px;
+}
+
+.heading h2 {
+  font-size: 29px;
+  margin-bottom: 5px;
+}
+
+.heading p,
+.muted {
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  padding: 23px;
+  border-radius: 15px;
+  box-shadow: 0 5px 18px #14244008;
+}
+
+.card h3 {
+  margin: 8px 0;
+}
+
+.card p {
+  margin-bottom: 15px;
+  color: var(--muted);
+}
+
+.icon {
+  font-size: 32px;
+  margin-bottom: 7px;
+}
+
+.btn {
+  background: var(--blue);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 9px;
+  font-weight: bold;
+}
+
+.btn:hover {
+  opacity: .9;
+}
+
+.btn.green {
+  background: var(--green);
+}
+
+.btn.red {
+  background: var(--red);
+}
+
+.btn.light {
+  background: #edf1f8;
+  color: var(--navy);
+}
+
+.btn-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 13px;
+}
+
+.notice, .safety, .info {
+  padding: 15px;
+  margin: 18px 0;
+  border-radius: 10px;
+}
+
+.notice {
+  background: #fff3df;
+  color: #744500;
+  border: 1px solid #f0d39b;
+}
+
+.safety {
+  background: #e8f8f0;
+  color: #075c42;
+  border: 1px solid #b8e5d1;
+}
+
+.info {
+  background: #edf3ff;
+  color: #244584;
+  border: 1px solid #cbd8ff;
+}
+
+form {
+  max-width: 800px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+label {
+  font-weight: bold;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #cbd4e1;
+  border-radius: 8px;
+  background: white;
+}
+
+textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.inline-check {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+}
+
+.inline-check input {
+  width: auto;
+  margin-top: 6px;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.job-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.job-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.job-top h3 {
+  margin: 0;
+}
+
+.tag {
+  display: inline-block;
+  padding: 4px 9px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.verified {
+  background: #e7f7f0;
+  color: var(--green);
+}
+
+.pending {
+  background: #fff3df;
+  color: var(--orange);
+}
+
+.rejected {
+  background: #fff0ef;
+  color: var(--red);
+}
+
+.sample {
+  background: #eaf0ff;
+  color: var(--blue);
+}
+
+.job-meta {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.empty {
+  padding: 30px;
+  text-align: center;
+  border: 1px dashed #cbd4e1;
+  border-radius: 12px;
+  color: var(--muted);
+}
+
+footer {
+  margin-top: 30px;
+  background: var(--navy);
+  color: white;
+  text-align: center;
+  padding: 25px;
+}
+
+footer p {
+  margin: 5px;
+}
+
+.small {
+  font-size: 13px;
+}
+
+@media(max-width: 600px) {
+  header {
+    align-items: flex-start;
+  }
+
+  nav {
+    width: 100%;
+  }
+
+  .form-grid,
+  .filters {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 45px 6%;
+  }
+
+  .job-top {
+    flex-direction: column;
+  }
+}
+</style>
 </head>
 
 <body>
 
-    <header>
-        <h1>Mana Jobs</h1>
-        <p>Find Opportunities. Build Your Future.</p>
-        <p>మీ భవిష్యత్తుకు మంచి అవకాశాలు</p>
-    </header>
+<header>
+  <div class="logo">Mana <span>Jobs</span></div>
 
-    <main>
-        <h2>Welcome to Mana Jobs!</h2>
-        <p>Choose the type of opportunity you are looking for.</p>
+  <nav>
+    <button onclick="showPage('home')">Home</button>
+    <button onclick="showPage('government')">Government</button>
+    <button onclick="showPage('private')">Private</button>
+    <button onclick="showPage('admin')">Admin Demo</button>
+  </nav>
+</header>
 
-        <div class="jobs">
+<!-- HOME -->
+<section id="home" class="page active">
+  <div class="hero">
+    <div class="hero-content">
+      <p>JOBS • GUIDANCE • OPPORTUNITIES</p>
+      <h1>Find Opportunities.<br>Build Your Future.</h1>
+      <p>
+        Mana Jobs helps people discover job opportunities,
+        government notifications, scholarships and career guidance.
+      </p>
 
-            <div class="card">
-                <h2>🏛️ Government Jobs</h2>
-                <p>Notifications, preparation strategies
-                and guidance from experienced seniors.</p>
-                <a href="#government" class="btn">
-                    Explore Government Jobs
-                </a>
-            </div>
+      <div class="btn-row">
+        <button class="btn" onclick="showPage('government')">
+          Government Jobs
+        </button>
+        <button class="btn light" onclick="showPage('private')">
+          Private Jobs
+        </button>
+      </div>
+    </div>
+  </div>
 
-            <div class="card">
-                <h2>💼 Private Jobs</h2>
-                <p>Explore full-time, part-time,
-                one-day and short-term jobs.</p>
-                <a href="#private" class="btn">
-                    Explore Private Jobs
-                </a>
-            </div>
+  <div class="container">
+    <div class="heading">
+      <h2>Choose Your Path</h2>
+      <p>What are you looking for today?</p>
+    </div>
 
+    <div class="grid">
+      <div class="card">
+        <div class="icon">🏛️</div>
+        <h3>Government</h3>
+        <p>
+          Notifications, application guidance, scholarships,
+          preparation strategies and senior guidance.
+        </p>
+        <button class="btn" onclick="showPage('government')">
+          Explore
+        </button>
+      </div>
+
+      <div class="card">
+        <div class="icon">💼</div>
+        <h3>Private Jobs</h3>
+        <p>
+          Find full-time, part-time, one-day, temporary
+          and other work opportunities.
+        </p>
+        <button class="btn" onclick="showPage('private')">
+          Explore
+        </button>
+      </div>
+    </div>
+
+    <div class="safety">
+      <strong>Stay safe:</strong> Never pay money to guarantee a job.
+      Never share OTPs, passwords or banking PINs with recruiters.
+    </div>
+  </div>
+</section>
+
+<!-- GOVERNMENT -->
+<section id="government" class="page">
+  <div class="container">
+    <div class="heading">
+      <h2>Government Guidance</h2>
+      <p>Information to help you prepare for government opportunities.</p>
+    </div>
+
+    <div class="info">
+      Always verify notifications, eligibility and deadlines through
+      the official recruitment website. This prototype does not provide
+      live or verified government notifications.
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="icon">📢</div>
+        <h3>Job Notifications</h3>
+        <p>Learn where to check official recruitment announcements.</p>
+        <button class="btn" onclick="govInfo('notifications')">Read More</button>
+      </div>
+
+      <div class="card">
+        <div class="icon">📝</div>
+        <h3>How to Apply</h3>
+        <p>Understand eligibility, documents and application steps.</p>
+        <button class="btn" onclick="govInfo('apply')">Read More</button>
+      </div>
+
+      <div class="card">
+        <div class="icon">🎓</div>
+        <h3>Scholarships</h3>
+        <p>Learn how to find scholarship information and deadlines.</p>
+        <button class="btn" onclick="govInfo('scholarships')">Read More</button>
+      </div>
+
+      <div class="card">
+        <div class="icon">📚</div>
+        <h3>Preparation Strategy</h3>
+        <p>Build a study plan with revision and practice.</p>
+        <button class="btn" onclick="govInfo('preparation')">Read More</button>
+      </div>
+
+      <div class="card">
+        <div class="icon">🤝</div>
+        <h3>Senior Guidance</h3>
+        <p>Learn from experience stories and senior advice.</p>
+        <button class="btn" onclick="govInfo('seniors')">Read More</button>
+      </div>
+    </div>
+
+    <div id="govDetails" class="card" style="margin-top:20px">
+      Select a topic above to see guidance.
+    </div>
+  </div>
+</section>
+
+<!-- PRIVATE -->
+<section id="private" class="page">
+  <div class="container">
+    <div class="heading">
+      <h2>Private Jobs</h2>
+      <p>Choose your role.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="icon">🔎</div>
+        <h3>Employee / Job Seeker</h3>
+        <p>Search job listings and check their status.</p>
+        <button class="btn" onclick="showPage('employee')">
+          Find Jobs
+        </button>
+      </div>
+
+      <div class="card">
+        <div class="icon">🏢</div>
+        <h3>Employer</h3>
+        <p>Submit a job opening for review before publication.</p>
+        <button class="btn" onclick="showPage('employer')">
+          Post a Job
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EMPLOYEE -->
+<section id="employee" class="page">
+  <div class="container">
+    <div class="heading">
+      <h2>Find Private Jobs</h2>
+      <p>Search available demo listings.</p>
+    </div>
+
+    <div class="safety">
+      <strong>Important:</strong> A verification badge is meaningful
+      only after genuine checks. The sample listings below are fictional.
+      Confirm the employer, work conditions and payment before accepting work.
+    </div>
+
+    <div class="filters">
+      <input id="search" placeholder="Search job or location"
+        oninput="renderJobs()">
+
+      <select id="typeFilter" onchange="renderJobs()">
+        <option value="">All Work Types</option>
+        <option>Full-time</option>
+        <option>Part-time</option>
+        <option>One-day work</option>
+        <option>15-day work</option>
+        <option>Temporary</option>
+        <option>Work from home</option>
+        <option>Internship</option>
+      </select>
+    </div>
+
+    <div id="jobList" class="grid"></div>
+    <p class="muted small" style="margin-top:15px">
+      Sample jobs are examples only, not real vacancies.
+    </p>
+  </div>
+</section>
+
+<!-- EMPLOYER -->
+<section id="employer" class="page">
+  <div class="container">
+    <div class="heading">
+      <h2>Post a Job</h2>
+      <p>Submit complete and accurate job information.</p>
+    </div>
+
+    <div class="notice">
+      New submissions remain pending until an administrator reviews them.
+      Submitting a job does not prove that it is genuine.
+    </div>
+
+    <div class="card">
+      <form id="employerForm">
+        <div class="form-grid">
+
+          <div class="field">
+            <label for="employerName">Employer / Contact Name *</label>
+            <input id="employerName" required maxlength="100">
+          </div>
+
+          <div class="field">
+            <label for="companyName">Company / Business Name *</label>
+            <input id="companyName" required maxlength="120">
+          </div>
+
+          <div class="field">
+            <label for="jobTitle">Job Title *</label>
+            <input id="jobTitle" required maxlength="120">
+          </div>
+
+          <div class="field">
+            <label for="jobType">Work Type *</label>
+            <select id="jobType" required>
+              <option value="">Choose Type</option>
+              <option>Full-time</option>
+              <option>Part-time</option>
+              <option>One-day work</option>
+              <option>15-day work</option>
+              <option>Temporary</option>
+              <option>Work from home</option>
+              <option>Internship</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="location">Work Location *</label>
+            <input id="location" required maxlength="160">
+          </div>
+
+          <div class="field">
+            <label for="salary">Pay / Salary Details *</label>
+            <input id="salary" required maxlength="100"
+              placeholder="For example: ₹500 per day">
+          </div>
+
+          <div class="field">
+            <label for="email">Contact Email *</label>
+            <input id="email" type="email" required maxlength="160">
+          </div>
+
+          <div class="field">
+            <label for="phone">Contact Phone (optional)</label>
+            <input id="phone" type="tel" maxlength="20">
+          </div>
+
+          <div class="field full">
+            <label for="website">Official Website / Business Profile (optional)</label>
+            <input id="website" type="url" placeholder="https://example.com">
+          </div>
+
+          <div class="field full">
+            <label for="description">Job Description *</label>
+            <textarea id="description" required maxlength="1800"
+              placeholder="Explain duties, skills, working hours and payment terms."></textarea>
+          </div>
+
+          <div class="field full">
+            <label class="inline-check">
+              <input id="confirm" type="checkbox" required>
+              <span>I confirm that the details are accurate and I will not ask applicants for a recruitment fee.</span>
+            </label>
+          </div>
         </div>
 
-        <section id="government" class="details">
-            <h2>Government Jobs</h2>
-            <ul>
-                <li>Latest job notifications</li>
-                <li>Exam preparation strategies</li>
-                <li>Senior experience stories and videos</li>
-                <li>Ask questions and get senior guidance</li>
-            </ul>
-            <p>Official notifications and links will be
-            added as we develop the website.</p>
-        </section>
+        <div class="btn-row">
+          <button class="btn" type="submit">Submit for Review</button>
+          <button class="btn light" type="reset">Clear Form</button>
+        </div>
 
-        <section id="private" class="details">
-            <h2>Private Jobs</h2>
-            <ul>
-                <li>Full-time jobs</li>
-                <li>Part-time jobs</li>
-                <li>One-day work</li>
-                <li>15-day work</li>
-            </ul>
-            <p>Job listings will be added in the next stages.</p>
-        </section>
-    </main>
+        <p id="formMessage" style="margin-top:15px" role="status"></p>
+      </form>
+    </div>
+  </div>
+</section>
 
-    <footer>
-        <p>Mana Jobs © 2026 | Opportunities for Everyone</p>
-    </footer>
+<!-- ADMIN DEMO -->
+<section id="admin" class="page">
+  <div class="container">
+    <div class="heading">
+      <h2>Admin Review</h2>
+      <p>Test the pending, approved and rejected workflow.</p>
+    </div>
+
+    <div class="notice">
+      <strong>Demo only:</strong> This page has no admin login or server-side
+      security. Anyone who can open this page can use its demo controls.
+      Do not use this to approve real jobs.
+    </div>
+
+    <div class="info">
+      Before approving a real job, independently verify the employer and
+      business details, confirm the job and payment conditions, and document
+      the review. A phone number, email or website alone is not proof.
+    </div>
+
+    <div id="adminList" class="grid"></div>
+  </div>
+</section>
+
+<footer>
+  <p><strong>Mana Jobs</strong></p>
+  <p>Opportunities with safety in mind.</p>
+  <p class="small">Frontend prototype — live verification requires a secure backend.</p>
+</footer>
+
+<script>
+const pageIds = [
+  "home", "government", "private",
+  "employee", "employer", "admin"
+];
+
+const storageKey = "manaJobsPrototypeJobsV1";
+
+const sampleJobs = [
+  {
+    id: "sample1",
+    employer: "Example Business",
+    company: "Sample Retail Store",
+    title: "Part-time Store Assistant",
+    type: "Part-time",
+    location: "Hyderabad",
+    salary: "Example payment details",
+    email: "example@example.com",
+    phone: "",
+    website: "",
+    description: "Fictional example only. This is not a real vacancy.",
+    status: "sample",
+    sample: true
+  },
+  {
+    id: "sample2",
+    employer: "Example Organizer",
+    company: "Sample Events",
+    title: "One-day Event Helper",
+    type: "One-day work",
+    location: "Hyderabad",
+    salary: "Example daily payment",
+    email: "events@example.com",
+    phone: "",
+    website: "",
+    description: "Fictional example only. Confirm duties and payment for real work.",
+    status: "sample",
+    sample: true
+  }
+];
+
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, function(char) {
+    return {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[char];
+  });
+}
+
+function loadJobs() {
+  try {
+    const jobs = JSON.parse(localStorage.getItem(storageKey) || "[]");
+    return Array.isArray(jobs) ? jobs : [];
+  } catch (error) {
+    return [];
+  }
+}
+
+function saveJobs(jobs) {
+  try {
+    localStorage.setItem(storageKey, JSON.stringify(jobs));
+    return true;
+  } catch (error) {
+    alert("Could not save the demo data in this browser.");
+    return false;
+  }
+}
+
+function allJobs() {
+  return [...sampleJobs, ...loadJobs()];
+}
+
+function showPage(id) {
+  pageIds.forEach(function(pageId) {
+    document.getElementById(pageId).classList.toggle(
+      "active", pageId === id
+    );
+  });
+
+  if (id === "employee") renderJobs();
+  if (id === "admin") renderAdmin();
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+const governmentDetails = {
+  notifications: [
+    "Government Job Notifications",
+    "Check official recruitment-board websites for the latest dates, eligibility, fees and corrections. Add a notification to Mana Jobs only after checking the original official source."
+  ],
+  apply: [
+    "How to Apply",
+    "1. Read the official notification. 2. Check eligibility. 3. Prepare documents. 4. Apply through the official portal. 5. Save your application receipt. Do not trust anyone promising guaranteed selection for money."
+  ],
+  scholarships: [
+    "Scholarships",
+    "Check scholarship eligibility, required documents and deadlines through official portals or your institution. Avoid anyone asking for an unofficial payment to guarantee a scholarship."
+  ],
+  preparation: [
+    "Preparation Strategy",
+    "Read the syllabus, divide topics into small weekly goals, practise previous papers, review mistakes and revise regularly. Make a realistic plan alongside college or work."
+  ],
+  seniors: [
+    "Senior Guidance",
+    "Share senior experience stories only with permission. A future version can include moderated Q&A, direct questions and a report option to reduce misleading advice."
+  ]
+};
+
+function govInfo(key) {
+  const detail = governmentDetails[key];
+
+  document.getElementById("govDetails").innerHTML =
+    "<h3>" + escapeHTML(detail[0]) + "</h3>" +
+    "<p>" + escapeHTML(detail[1]) + "</p>";
+}
+
+function statusBadge(job) {
+  if (job.status === "approved") {
+    return '<span class="tag verified">Demo approved</span>';
+  }
+
+  if (job.status === "rejected") {
+    return '<span class="tag rejected">Rejected</span>';
+  }
+
+  if (job.status === "sample") {
+    return '<span class="tag sample">Fictional sample</span>';
+  }
+
+  return '<span class="tag pending">Pending verification</span>';
+}
+
+function jobCard(job, adminMode) {
+  let buttons = "";
+
+  if (adminMode && !job.sample && job.status === "pending") {
+    buttons =
+      '<div class="btn-row">' +
+      '<button class="btn green" onclick="changeStatus(\'' +
+      job.id + '\', \'approved\')">Approve Demo</button>' +
+      '<button class="btn red" onclick="changeStatus(\'' +
+      job.id + '\', \'rejected\')">Reject Demo</button>' +
+      '</div>';
+  }
+
+  if (!adminMode && !job.sample && job.status === "approved") {
+    buttons =
+      '<div class="btn-row"><button class="btn light" onclick="reportJob(\'' +
+      job.id + '\')">Report Job</button></div>';
+  }
+
+  if (job.sample) {
+    buttons = '<p class="muted small">Example only — not a real vacancy.</p>';
+  }
+
+  if (adminMode) {
+    buttons +=
+      '<p class="muted small">Contact: ' +
+      escapeHTML(job.employer) + ' · ' + escapeHTML(job.email) +
+      (job.phone ? ' · ' + escapeHTML(job.phone) : '') +
+      '</p>' +
+      (job.website
+        ? '<p class="muted small">Website provided: ' +
+          escapeHTML(job.website) + '</p>'
+        : '') +
+      '<p class="muted small">Independently verify all details before approval.</p>';
+  }
+
+  return `
+    <article class="card job-card">
+      <div class="job-top">
+        <h3>${escapeHTML(job.title)}</h3>
+        ${statusBadge(job)}
+      </div>
+      <strong>${escapeHTML(job.company)}</strong>
+      <div class="job-meta">
+        📍 ${escapeHTML(job.location)}<br>
+        🕒 ${escapeHTML(job.type)}<br>
+        💰 ${escapeHTML(job.salary)}
+      </div>
+      <p>${escapeHTML(job.description)}</p>
+      ${buttons}
+    </article>
+  `;
+}
+
+function renderJobs() {
+  const search = (
+    document.getElementById("search")?.value || ""
+  ).toLowerCase().trim();
+
+  const type = document.getElementById("typeFilter")?.value || "";
+
+  const jobs = allJobs().filter(function(job) {
+    return job.sample || job.status === "approved";
+  }).filter(function(job) {
+    return !type || job.type === type;
+  }).filter(function(job) {
+    const text = [
+      job.title, job.company, job.location, job.description
+    ].join(" ").toLowerCase();
+
+    return !search || text.includes(search);
+  });
+
+  const list = document.getElementById("jobList");
+
+  list.innerHTML = jobs.length
+    ? jobs.map(function(job) {
+        return jobCard(job, false);
+      }).join("")
+    : '<div class="empty" style="grid-column:1/-1">' +
+      'No matching approved jobs found.</div>';
+}
+
+function renderAdmin() {
+  const jobs = loadJobs();
+  const list = document.getElementById("adminList");
+
+  list.innerHTML = jobs.length
+    ? jobs.map(function(job) {
+        return jobCard(job, true);
+      }).join("")
+    : '<div class="empty" style="grid-column:1/-1">' +
+      'No submissions yet. Submit a job from the Employer section.</div>';
+}
+
+function changeStatus(id, status) {
+  const jobs = loadJobs();
+  const job = jobs.find(function(item) {
+    return item.id === id;
+  });
+
+  if (!job) return;
+
+  job.status = status;
+  job.reviewedAt = new Date().toISOString();
+
+  if (saveJobs(jobs)) {
+    renderAdmin();
+    renderJobs();
+  }
+}
+
+function reportJob(id) {
+  const reason = prompt(
+    "Why are you reporting this job? Please describe the concern."
+  );
+
+  if (!reason || !reason.trim()) return;
+
+  // Prototype only: reports are not sent to a real admin.
+  alert(
+    "Demo only: your report has not been sent to a server. " +
+    "A real version needs secure report storage and investigation."
+  );
+}
+
+document.getElementById("employerForm").addEventListener(
+  "submit", function(event) {
+    event.preventDefault();
+
+    const job = {
+      id: "job-" + Date.now() + "-" +
+        Math.random().toString(36).slice(2, 7),
+      employer: document.getElementById("employerName").value.trim(),
+      company: document.getElementById("companyName").value.trim(),
+      title: document.getElementById("jobTitle").value.trim(),
+      type: document.getElementById("jobType").value,
+      location: document.getElementById("location").value.trim(),
+      salary: document.getElementById("salary").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      phone: document.getElementById("phone").value.trim(),
+      website: document.getElementById("website").value.trim(),
+      description: document.getElementById("description").value.trim(),
+      status: "pending",
+      createdAt: new Date().toISOString()
+    };
+
+    const jobs = loadJobs();
+    jobs.push(job);
+
+    if (saveJobs(jobs)) {
+      document.getElementById("formMessage").innerHTML =
+        '<span class="tag pending">Pending verification</span> ' +
+        'Saved in this browser only. It is not published to other users.';
+
+      this.reset();
+    }
+  }
+);
+
+renderJobs();
+</script>
 
 </body>
 </html>
+
